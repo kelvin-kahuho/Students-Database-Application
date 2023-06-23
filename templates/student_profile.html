@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Profile</h1>
+        <div class="profile">
+            <div class="profile-picture">
+                {% if student[9] %}
+                <img src="{{ url_for('static', filename='/images/' + student[9]) }}" alt="Profile Picture">
+                {% else %}
+                <p>No profile picture available.</p>
+                {% endif %}
+            </div>
+            <div class="profile-details">
+                <p><strong>Student ID:</strong> {{ student[0] }}</p>
+                <p><strong>Name:</strong> {{ student[1] }} {{ student[2]}}</p>
+                <p><strong>Date of Birth:</strong> {{ student[3]}}</p>
+                <p><strong>Gender:</strong> {{ student[4] }}</p>
+                <p><strong>Email:</strong> {{ student[5] }}</p>
+                <p><strong>Phone Number:</strong> {{ student[6] }}</p>
+                <p><strong>Address:</strong> {{ student[7] }}</p>
+                <p><strong>Enrollment Date:</strong> {{ student[8] }}</p>
+                <!-- Add other relevant student details here -->
+            </div>
+        </div>
+        <br>
+        <button><a href="{{ url_for('index') }}">View Students</a></button>
+    </div>
+</body>
+</html>
