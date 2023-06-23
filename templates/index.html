@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students Database</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Students Database</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>phone Number</th>
+                <!-- Add other table headers as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student[0] }}</td>
+                <td><a href="{{ url_for('student_profile', student_id=student[0]) }}">{{ student[1] }} {{ student[2] }}</a></td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+                <td>{{ student[5] }}</td>
+                <td>{{ student[6] }}</td>
+                <!-- Add other table data as needed -->
+            </tr>
+            {% endfor %}
+        </tbody>
+        <button><a href="{{ url_for('add_student') }}">Add Student</a></button>
+    </table>
+    </div>
+</body>
+</html>
