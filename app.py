@@ -1,5 +1,5 @@
 #Import necessary modules
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import mysql.connector
 from PIL import Image
 
@@ -88,9 +88,24 @@ def student_profile(student_id):
         return render_template('student_profile.html', student=student)
     else:
         return "Student not found."
+    
+
+#Route to serve a json file- This end point can be integrated by any front-end application - React.js of Vue.js or a mobile app
+@app.route('/students', methods = ['GET', 'POST'])
+def students():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    # Retrieve the student information from the database
+    query = "SELECT * FROM Students"
+    cursor.execute(query)
+    student = cursor.fetchone()
+    conn.close()
+
+    return jsonify(student)
+
 
 
 
 #Run the Flask App
 if __name__=='__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5002)
