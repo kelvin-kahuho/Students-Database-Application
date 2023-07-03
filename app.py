@@ -98,7 +98,7 @@ def students():
     # Retrieve the student information from the database
     query = "SELECT * FROM Students"
     cursor.execute(query)
-    student = cursor.fetchone()
+    student = cursor.fetchall()
     conn.close()
 
     return jsonify(student)
