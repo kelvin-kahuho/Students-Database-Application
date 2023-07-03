@@ -68,9 +68,3 @@ body {
   .container form {
     margin-top: 20px;
   }
-  
-  .profile-picture {
-    width: 150px; /* Adjust the width and height as needed */
-    height: 150px;
-    border-radius: 50%; /* Make the photo round */
-  }
