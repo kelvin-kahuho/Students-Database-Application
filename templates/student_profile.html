@@ -10,7 +10,7 @@
         <div class="profile">
             <div class="profile-picture">
                 {% if student[9] %}
-                <img src="{{ url_for('static', filename='/images/' + student[9]) }}" alt="Profile Picture">
+                <img style="width: 400px; height: 450px;" src="{{ url_for('static', filename='/images/' + student[9]) }}" alt="Profile Picture">
                 {% else %}
                 <p>No profile picture available.</p>
                 {% endif %}
