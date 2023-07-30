@@ -28,6 +28,8 @@
             </div>
         </div>
         <br>
+        <button><a href="{{ url_for('delete_student', student_id=student[0]) }}">Delete Student</a></button>
+        <br>
         <button><a href="{{ url_for('index') }}">View Students</a></button>
     </div>
 </body>
