@@ -4,7 +4,7 @@ This is a simple web application built with Flask that provides a front-end inte
 
 ## Features
 
-- Display a list of students with their details such as student ID, name, and date of birth.
+- Display a list of students with their details such as student ID, name, profile photo, and date of birth.
 - Add new student records to the database.
 - Update and delete existing student records.
 
