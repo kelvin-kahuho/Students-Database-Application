@@ -89,6 +89,19 @@ def student_profile(student_id):
     else:
         return "Student not found."
     
+#Route to delete a student profile
+@app.route('/student/delete/<int:student_id>')
+def delete_student(student_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    #Send delete request to the database
+    query = "DELETE FROM Students WHERE StudentID = %s"
+    cursor.execute(query, (student_id))
+    conn.close()
+
+    return redirect(url_for('index'))
+    
 
 #Route to serve a json file- This end point can be integrated by any front-end application - React.js of Vue.js or a mobile app
 @app.route('/students', methods = ['GET', 'POST'])
