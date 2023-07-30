@@ -97,7 +97,8 @@ def delete_student(student_id):
 
     #Send delete request to the database
     query = "DELETE FROM Students WHERE StudentID = %s"
-    cursor.execute(query, (student_id))
+    cursor.execute(query, (student_id,))
+    conn.commit()
     conn.close()
 
     return redirect(url_for('index'))
