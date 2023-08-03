@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Database apllication</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+</head>
+<body>
+    <header>
+        <h1>My School</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">View Students</a>
+            <a href="{{ url_for('add_student') }}">Add Student</a>
+            <form id="search_student" class="search_student">
+                <input type="number" id="student_id_input" name="student_id" placeholder="Enter student_id">
+                <button type="submit">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/zniqnylq.json"
+                        trigger="hover"
+                        colors="primary:#4be1ec,secondary:#cb5eee"
+                        style="width:30px; height:30px">
+                    </lord-icon>
+                </button>             
+            </form>
+        </nav>
+    </header>
+    <br>
+    <div class="container">
+
+        <p style="color: red; text-align: center;"></p>{{eror}}</p>
+        
+        {% block content%}
+
+        {% endblock content %}
+
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
