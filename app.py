@@ -73,21 +73,40 @@ def index():
     return render_template('index.html', students=students)
 
 #Route to display students profiles
-@app.route('/student/<int:student_id>')
+@app.route('/student/<int:student_id>', methods = ['GET', 'POST'])
 def student_profile(student_id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
+    if request.method == 'POST': 
+        student_id = int(request.form.get('student_id'))     
+        conn = get_db_connection()
+        cursor = conn.cursor()
 
-    # Retrieve the student information from the database
-    query = "SELECT * FROM Students WHERE StudentID = %s"
-    cursor.execute(query, (student_id,))
-    student = cursor.fetchone()
-    conn.close()
+        # Retrieve the student information from the database
+        query = "SELECT * FROM Students WHERE StudentID = %s"
+        cursor.execute(query, (student_id,))
+        student = cursor.fetchone()
+        conn.close()
 
-    if student:
-        return render_template('student_profile.html', student=student)
+        if student:
+            return render_template('student_profile.html', student=student)
+        else:
+            error = "Student not found"
+            return render_template('home.html', error=error)
     else:
-        return "Student not found."
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        # Retrieve the student information from the database
+        query = "SELECT * FROM Students WHERE StudentID = %s"
+        cursor.execute(query, (student_id,))
+        student = cursor.fetchone()
+        conn.close()
+
+        if student:
+            return render_template('student_profile.html', student=student)
+        else:
+            error = "Student not found"
+            return render_template('home.html', error=error)
+
     
 #Route to delete a student profile
 @app.route('/student/delete/<int:student_id>')
