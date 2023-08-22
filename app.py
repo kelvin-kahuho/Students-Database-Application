@@ -1,10 +1,12 @@
 #Import necessary modules
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask_cors import CORS
 import mysql.connector
 from PIL import Image
 
 #Initialize the Flask Application
 app = Flask(__name__)
+CORS(app)
 
 #Configure Database Connection
 def get_db_connection():
@@ -131,10 +133,25 @@ def students():
     # Retrieve the student information from the database
     query = "SELECT * FROM Students"
     cursor.execute(query)
-    student = cursor.fetchall()
+    students = cursor.fetchall()
     conn.close()
 
-    return jsonify(student)
+    students_list = []
+    for student in students:
+        students_list.append({
+            'id': student[0],
+            'first_name': student[1],
+            'last_name': student[2],
+            'date_of_birth' : student[3],
+            'gender': student[4],
+            'email': student[5],
+            'phone': student[6],
+            'address': student[7],
+            'enrollment_date': student[8],
+            'profile_picture': student[9]
+        })
+
+    return jsonify(students_list)
 
 
 
