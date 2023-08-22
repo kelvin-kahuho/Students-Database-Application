@@ -41,7 +41,7 @@ pip install -r requirements.txt
 python app.py
 
 
-6. Access the application in your web browser at: `http://localhost:5000`
+6. Access the application in your web browser at: `http://localhost:5000` or any port defined in your app.py file
 
 ## Contributing
 
