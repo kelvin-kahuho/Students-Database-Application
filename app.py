@@ -150,6 +150,7 @@ def students():
             'enrollment_date': student[8],
             'profile_picture': student[9]
         })
+    print(students_list)
 
     return jsonify(students_list)
 
